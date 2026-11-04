@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Hóa Luật Tục & Hương Ước Làng Xã - Mã C05</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --heritage-primary: #872323;
+            --heritage-secondary: #c28834;
+            --heritage-dark: #2c1810;
+            --heritage-bg: #f9f6f0;
+            --heritage-card-bg: #ffffff;
+            --heritage-accent: #d8973c;
+        }
+
+        body {
+            background-color: var(--heritage-bg);
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .heritage-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--heritage-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .heritage-serif {
+            font-family: 'Merriweather', serif;
+        }
+
+        .navbar-heritage {
+            background: linear-gradient(135deg, var(--heritage-dark) 0%, var(--heritage-primary) 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid var(--heritage-secondary);
+        }
+
+        .card-custom {
+            border: 1px solid rgba(194, 136, 52, 0.25);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(44, 24, 16, 0.08);
+            background: var(--heritage-card-bg);
+        }
+
+        .card-header-heritage {
+            background: linear-gradient(to right, #872323, #a13232);
+            color: #fff;
+            border-top-left-radius: 11px !important;
+            border-top-right-radius: 11px !important;
+            border-bottom: 2px solid var(--heritage-secondary);
+            padding: 1.2rem 1.8rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #4a3427;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--heritage-secondary);
+            box-shadow: 0 0 0 0.25rem rgba(194, 136, 52, 0.25);
+        }
+
+        .badge-code {
+            background-color: #ffd97d;
+            color: #744210;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.35em 0.8em;
+            border-radius: 6px;
+        }
+
+        .btn-heritage-primary {
+            background-color: var(--heritage-primary);
+            border-color: var(--heritage-primary);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.65rem 1.8rem;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-heritage-primary:hover {
+            background-color: #6e1c1c;
+            border-color: #6e1c1c;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(135, 35, 35, 0.35);
+        }
+
+        .btn-heritage-secondary {
+            background-color: #f3ede2;
+            border-color: #d8c29d;
+            color: #5c3b1e;
+            font-weight: 600;
+            padding: 0.65rem 1.4rem;
+            border-radius: 8px;
+        }
+
+        .btn-heritage-secondary:hover {
+            background-color: #e5d9c5;
+            color: #3b2512;
+        }
+
+        .field-group-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--heritage-primary);
+            border-left: 4px solid var(--heritage-secondary);
+            padding-left: 0.6rem;
+            margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .required-star {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .sample-fill-btn {
+            background-color: transparent;
+            border: 1px dashed var(--heritage-secondary);
+            color: var(--heritage-primary);
+            font-size: 0.85rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .sample-fill-btn:hover {
+            background-color: #fff4e0;
+            border-color: var(--heritage-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-heritage">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" th:href="@{/customs}">
+                <i class="bi bi-book-half fs-3 me-2 text-warning"></i>
+                <div>
+                    <span class="fw-bold fs-5">DI SẢN VĂN HÓA LÀNG XÃ</span>
+                    <span class="badge badge-code ms-2">Mã C05</span>
+                    <div class="small text-white-50" style="font-size: 0.75rem;">Số hóa Luật tục & Hương ước làng xã Việt Nam</div>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item me-2">
+                        <a class="nav-link text-white active" th:href="@{/customs/new}">
+                            <i class="bi bi-pencil-square me-1"></i> Nhập liệu số hóa
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link text-white-50" th:href="@{/customs}">
+                            <i class="bi bi-archive me-1"></i> Danh mục di sản
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="badge bg-light text-dark px-2 py-2">
+                            <i class="bi bi-laptop me-1 text-primary"></i> Giai đoạn: Offline / Local
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container py-4">
+
+        <!-- Thông báo thành công hoặc lỗi -->
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card card-custom">
+                    <!-- Card Header -->
+                    <div class="card-header-heritage d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <div>
+                            <h4 class="mb-0 fw-bold">
+                                <i class="bi bi-file-earmark-text me-2"></i>
+                                <span th:text="${isEdit} ? 'Hiệu Chỉnh Văn Bản Số Hóa' : 'Phiếu Thu Thập & Số Hóa Hương Ước, Luật Tục'"></span>
+                            </h4>
+                            <small class="text-white-50">Lưu giữ các chuẩn mực, lệ tục cổ truyền phục vụ nghiên cứu và bảo tồn văn hóa</small>
+                        </div>
+                        <div>
+                            <button type="button" class="sample-fill-btn text-white bg-warning bg-opacity-25" onclick="fillSampleData()">
+                                <i class="bi bi-magic me-1"></i> Điền dữ liệu mẫu (Demo)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card Body / Form -->
+                    <div class="card-body p-4 p-md-5">
+                        <form th:action="@{/customs/save}" th:object="${regulation}" method="POST" novalidate id="customForm">
+                            <!-- Hidden ID (cho trường hợp Edit) -->
+                            <input type="hidden" th:field="*{id}" />
+
+                            <!-- PHẦN 1: THÔNG TIN CHUNG -->
+                            <div class="field-group-title">
+                                <i class="bi bi-info-circle me-1"></i> 1. Thông tin định danh & Phân loại
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label">
+                                    Tiêu đề điều khoản hoặc tên hương ước <span class="required-star">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="title" th:field="*{title}"
+                                       placeholder="Ví dụ: Khoán ước làng Mộ Trạch - Điều lệ bảo vệ trật tự trị an"
+                                       th:classappend="${#fields.hasErrors('title')} ? 'is-invalid' : ''">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                                <div class="form-text">Tên gọi chính thức hoặc tiêu đề trích đoạn của điều lệ/hương ước.</div>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="category" class="form-label">
+                                        Phân loại nhóm <span class="required-star">*</span>
+                                    </label>
+                                    <select class="form-select" id="category" th:field="*{category}"
+                                            th:classappend="${#fields.hasErrors('category')} ? 'is-invalid' : ''">
+                                        <option value="">-- Chọn nhóm phân loại --</option>
+                                        <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat}"></option>
+                                    </select>
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+                                    <div class="form-text">4 nhóm chính: Trật tự trị an, Đạo đức xã hội, Tín ngưỡng - Lễ hội, Kinh tế - Sản xuất.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="historicalPeriod" class="form-label">
+                                        Giai đoạn lịch sử <span class="required-star">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="historicalPeriod" th:field="*{historicalPeriod}"
+                                           list="historicalPeriodList"
+                                           placeholder="Chọn hoặc nhập giai đoạn lịch sử..."
+                                           th:classappend="${#fields.hasErrors('historicalPeriod')} ? 'is-invalid' : ''">
+                                    <datalist id="historicalPeriodList">
+                                        <option th:each="period : ${historicalPeriods}" th:value="${period}"></option>
+                                    </datalist>
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('historicalPeriod')}" th:errors="*{historicalPeriod}"></div>
+                                    <div class="form-text">Ví dụ: Thời Lê, Thời Nguyễn, Thế kỷ XIX...</div>
+                                </div>
+                            </div>
+
+                            <!-- PHẦN 2: ĐỊA BÀN ÁP DỤNG -->
+                            <div class="field-group-title mt-4">
+                                <i class="bi bi-geo-alt me-1"></i> 2. Địa bàn áp dụng (Hành chính địa phương)
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="villageName" class="form-label">
+                                        Tên Làng / Thôn <span class="required-star">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="villageName" th:field="*{villageName}"
+                                           placeholder="Ví dụ: Làng Mộ Trạch, Thôn Quỳnh Đôi..."
+                                           th:classappend="${#fields.hasErrors('villageName')} ? 'is-invalid' : ''">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('villageName')}" th:errors="*{villageName}"></div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="commune" class="form-label">
+                                        Xã / Phường <span class="required-star">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="commune" th:field="*{commune}"
+                                           placeholder="Ví dụ: Xã Tân Hồng, Xã Quỳnh Đôi..."
+                                           th:classappend="${#fields.hasErrors('commune')} ? 'is-invalid' : ''">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('commune')}" th:errors="*{commune}"></div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="district" class="form-label">
+                                        Huyện / Quận <span class="required-star">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="district" th:field="*{district}"
+                                           placeholder="Ví dụ: Huyện Bình Giang, Huyện Quỳnh Lưu..."
+                                           th:classappend="${#fields.hasErrors('district')} ? 'is-invalid' : ''">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('district')}" th:errors="*{district}"></div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="province" class="form-label">
+                                        Tỉnh / Thành phố <span class="required-star">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="province" th:field="*{province}"
+                                           placeholder="Ví dụ: Hải Dương, Nghệ An, Hà Nội..."
+                                           th:classappend="${#fields.hasErrors('province')} ? 'is-invalid' : ''">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('province')}" th:errors="*{province}"></div>
+                                </div>
+                            </div>
+
+                            <!-- PHẦN 3: NỘI DUNG DI SẢN -->
+                            <div class="field-group-title mt-4">
+                                <i class="bi bi-file-text me-1"></i> 3. Nội dung di sản văn bản & Ý nghĩa
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="content" class="form-label">
+                                    Nội dung chi tiết luật tục / hương ước <span class="required-star">*</span>
+                                </label>
+                                <textarea class="form-control heritage-serif" id="content" th:field="*{content}" rows="7"
+                                          placeholder="Nhập toàn văn hoặc trích yếu quy ước, các điều khoản chế tài, lệ làng, quy chuẩn ứng xử..."
+                                          th:classappend="${#fields.hasErrors('content')} ? 'is-invalid' : ''"></textarea>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+                                <div class="form-text">Trường văn bản lớn (NVARCHAR(MAX)) - Hỗ trợ nhập liệu văn tự dài, các bản dịch chữ Hán Nôm hoặc quốc ngữ.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="significance" class="form-label">
+                                    Ý nghĩa văn hóa & lịch sử
+                                </label>
+                                <textarea class="form-control" id="significance" th:field="*{significance}" rows="4"
+                                          placeholder="Đánh giá giá trị lịch sử, nhân văn, tinh thần đoàn kết cộng đồng, bài học bảo tồn di sản..."
+                                          th:classappend="${#fields.hasErrors('significance')} ? 'is-invalid' : ''"></textarea>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('significance')}" th:errors="*{significance}"></div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="sourceReference" class="form-label">
+                                    Nguồn gốc tài liệu / Dẫn chứng
+                                </label>
+                                <input type="text" class="form-control" id="sourceReference" th:field="*{sourceReference}"
+                                       placeholder="Ví dụ: Bản khắc gỗ Hán Nôm năm Tự Đức thứ 12 / Viện Nghiên cứu Hán Nôm số hiệu AB.452 / Thư viện Quốc gia"
+                                       th:classappend="${#fields.hasErrors('sourceReference')} ? 'is-invalid' : ''">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('sourceReference')}" th:errors="*{sourceReference}"></div>
+                                <div class="form-text">Ghi rõ xuất xứ, người sưu tầm, hiện vật lưu trữ hoặc thư mục tham khảo.</div>
+                            </div>
+
+                            <!-- Nút thao tác -->
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top flex-wrap gap-2">
+                                <a th:href="@{/customs}" class="btn btn-heritage-secondary">
+                                    <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách
+                                </a>
+                                <div class="d-flex gap-2">
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-counterclockwise me-1"></i> Làm lại
+                                    </button>
+                                    <button type="submit" class="btn btn-heritage-primary">
+                                        <i class="bi bi-cloud-arrow-up-fill me-1"></i>
+                                        <span th:text="${isEdit} ? 'Cập nhật bản ghi' : 'Lưu dữ liệu số hóa'"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer hướng dẫn giai đoạn vận hành -->
+                <div class="mt-4 p-3 bg-white rounded-3 border text-center text-muted small">
+                    <span class="text-primary fw-bold"><i class="bi bi-info-circle-fill me-1"></i> Lộ trình chuyển đổi hệ thống:</span>
+                    Hệ thống đang hoạt động ở <strong>Giai đoạn 1 (Chạy offline / Cơ sở dữ liệu nội bộ)</strong>.
+                    Khi hoàn tất quá trình số hóa sơ bộ, dữ liệu sẽ được đồng bộ lên máy chủ đám mây trực tuyến ở <strong>Giai đoạn 2 (Online)</strong>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script điền dữ liệu mẫu nhanh cho người thử nghiệm -->
+    <script>
+        function fillSampleData() {
+            document.getElementById('title').value = "Hương ước làng Mộ Trạch - Quy ước bảo vệ an ninh trật tự và khuyến học";
+            document.getElementById('villageName').value = "Làng Mộ Trạch";
+            document.getElementById('commune').value = "Xã Tân Hồng";
+            document.getElementById('district').value = "Huyện Bình Giang";
+            document.getElementById('province').value = "Hải Dương";
+            document.getElementById('category').value = "Trật tự trị an";
+            document.getElementById('historicalPeriod').value = "Thời Lê sơ - Hậu Lê (Thế kỷ XV - XVIII)";
+            document.getElementById('content').value = "Điều 1: Trong làng trên dưới hòa thuận, người có chức dịch hay thường dân đều phải giữ nghiêm phép nước lệ làng.\n" +
+                "Điều 2: Ban đêm tuần đinh phải canh gác tại các điếm canh đầu thôn, đánh trống điểm canh, không để kẻ gian trà trộn trộm cắp hoa màu, gia súc.\n" +
+                "Điều 3: Con em trong làng theo nghiệp bút nghiên, đỗ đạt cử nhân, tiến sĩ được làng mở tiệc nghênh rước, cấp ruộng học điền để khuyến khích tinh thần hiếu học.";
+            document.getElementById('significance').value = "Thể hiện tinh thần tự quản cộng đồng sâu sắc của làng xã Bắc Bộ, kết hợp chặt chẽ giữa việc giữ gìn trị an và truyền thống khoa bảng hiếu học độc đáo của 'Làng tiến sĩ xứ Đông'.";
+            document.getElementById('sourceReference').value = "Bản dịch Hán Nôm lưu giữ tại Đình Mộ Trạch, đối chiếu tư liệu Viện Nghiên cứu Hán Nôm mã số HN-0125.";
+        }
+    </script>
+</body>
+</html>
