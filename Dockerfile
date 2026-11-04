@@ -15,10 +15,6 @@ RUN ./mvnw clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Tạo user không có quyền root để tăng bảo mật
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
-
 COPY --from=builder /app/target/*.jar app.jar
 
 ENV PORT=8080
