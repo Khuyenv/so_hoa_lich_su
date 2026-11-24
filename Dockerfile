@@ -1,9 +1,11 @@
-# 1. Giai đoạn Build JAR (Dùng image đã có sẵn Maven, chống lỗi 429 Too Many Requests từ maven wrapper)
+# 1. Giai đoạn Build JAR (Dùng image có sẵn Maven + cấu hình CDN Mirror chống 429)
 FROM maven:3.9-eclipse-temurin-17-alpine AS builder
 WORKDIR /app
+
+COPY settings.xml ./
 COPY pom.xml ./
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -s settings.xml
 
 # 2. Giai đoạn Khởi chạy
 FROM eclipse-temurin:17-jre-alpine
